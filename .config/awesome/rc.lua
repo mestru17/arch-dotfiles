@@ -503,6 +503,11 @@ awful.rules.rules = {
       properties = { screen = 1, tag = "  ", switch_to_tags = true }
     },
 
+    -- Set pcmanfm to always map on the tag  on screen 1.
+    { rule = { class = "Pcmanfm" },
+      properties = { screen = 1, tag = "  ", switch_to_tags = true }
+    },
+
     -- Set Discord to always map on the tag ﭮ on screen 1.
     { rule = { class = "discord" },
       properties = { screen = 1, tag = " ﭮ ", switch_to_tags = true }

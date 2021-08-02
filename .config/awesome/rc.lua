@@ -6,14 +6,18 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
+
 -- Widget and layout library
 local wibox = require("wibox")
+
 -- Theme handling library
 local beautiful = require("beautiful")
+
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -52,6 +56,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/theme.lua")
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
+bg = "#121212ff"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -188,7 +193,7 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
 
     function rounded_corners(cr, width, height)
-        gears.shape.rounded_rect(cr, width, height, 10)
+        gears.shape.rounded_rect(cr, width, height, 20)
     end
 
     -- Create a taglist widget
@@ -198,18 +203,13 @@ awful.screen.connect_for_each_screen(function(s)
         buttons = taglist_buttons,
         style = {
             shape = rounded_corners,
-	    bg_occupied = "#222222ff",
-	    bg_empty = "#222222ff",
-	    fg_occupied = "#98df71ff",
+	    bg_occupied = bg,
+	    bg_empty = bg,
+	    bg_focus = bg,
+	    fg_occupied = "#a27592ff",
+	    fg_focus = "#d35d6eff",
         }
     }
-
-    -- Create a tasklist widget
-    -- s.mytasklist = awful.widget.tasklist {
-    --     screen  = s,
-    --     filter  = awful.widget.tasklist.filter.currenttags,
-    --     buttons = tasklist_buttons
-    -- }
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", x = 12, width = 1896, screen = s, bg = "#00000000" })
@@ -221,25 +221,21 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Left widgets
 	    {
                 layout = wibox.layout.fixed.horizontal,
-                -- mylauncher,
                 s.mytaglist,
                 s.mypromptbox,
             },
-	    bg = "#222222ff",
+	    bg = bg,
             shape = rounded_corners,
 	    widget = wibox.container.background,
         },
-        -- s.mytasklist, -- Middle widget
         nil, -- Middle widget
         { -- Right widgets
             {
                 layout = wibox.layout.fixed.horizontal,
-                -- mykeyboardlayout,
                 wibox.widget.systray(),
                 mytextclock,
-                s.mylayoutbox,
             },
-	    bg = "#222222ff",
+	    bg = bg,
             shape = rounded_corners,
 	    widget = wibox.container.background,
         },
@@ -341,7 +337,7 @@ globalkeys = gears.table.join(
     -- Prompt
     --awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
     --          {description = "run prompt", group = "launcher"}),
-    awful.key({ modkey }, "r", function() awful.spawn("dmenu_run") end,
+    awful.key({ modkey }, "r", function() awful.spawn("dmenu_run -i -p 'Run:' -fn 'mononoki Nerd Font'") end,
               { description = "run dmenu", group = "launcher" }),
 
     awful.key({ modkey }, "x",

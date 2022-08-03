@@ -11,8 +11,8 @@ Some dotfiles depend on certain third party packages being installed and might n
 | .config/nitrogen/\* | [archlinux-wallpaper](https://archlinux.org/packages/community/any/archlinux-wallpaper/) | `sudo pacman -S archlinux-wallpaper` |
 | .config/starship.toml | [ttf-font-awesome](https://archlinux.org/packages/community/any/ttf-font-awesome/) | `sudo pacman -S ttf-font-awesome` |
 
-To install all dependencies at once, run the following (NOTE: This will not set up and configure Xorg (`xorg-server`) properly. You should probably do so manually and not with this command; the same goes for if
-you use Wayland. In either case, you can safely exclude `xorg-server` and `xorg-apps` from the command below):
+To install all dependencies at once, run the following (NOTE: This will not set up and configure Xorg (`xorg-server`) properly. You should probably do so manually and not with these commands; the same goes for if
+you use Wayland. In either case, you can safely exclude `xorg-server` and `xorg-apps` from the commands below):
 ```bash
 sudo pacman -S exa git starship xorg-server xorg-apps nitrogen picom archlinux wallpaper ttf-font-awesome
 yay -S nerd-fonts-fira-code

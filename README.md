@@ -23,7 +23,7 @@ Make sure to install dependencies for the dotfiles that you need as explained in
 
 Then run:
 ```bash
-curl -Ls https://raw.githubusercontent.com/mestru17/arch-dotfiles/master/install_dotfiles | bash
+curl -H "Cache-Control: no-cache" -Ls https://raw.githubusercontent.com/mestru17/arch-dotfiles/master/install_dotfiles | bash
 ```
 
 This runs the install script which handles cloning the repository properly. That is, it clones the repository as a bare repository, pulls the dotfiles, and configures it to not show untracked files when using

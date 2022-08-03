@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+DOTFILES_DIR="$HOME/.dotfiles"
+
+confirm() {
+        printf "\n$@"
+        read -p " (y/n) " -n 1 -r
+        echo # move to a new line after read
+        [[ $REPLY =~ ^[Yy]$ ]]
+}
+
+# Ask user what to do if an existing dotfiles directory was found
+if [ -d "$DOTFILES_DIR" ]; then
+	if ! confirm "Found existing $DOTFILES_DIR directory. Do you want to overwrite it? Warning: Overwriting the existing directory completely removes it so make sure to back it up if you are in doubt."; then
+		echo "Aborted dotfile installation."
+		exit
+	fi
+
+	# Remove old dotfiles directory before cloning
+	rm -rf "$DOTFILES_DIR"
+	echo "Removed old $DOTFILES_DIR directory."
+fi
+
+# Clone bare repository to $HOME/.dotfiles
+git clone --bare git@github.com:mestru17/arch-dotfiles.git "$HOME/.dotfiles"
+
+config() {
+	git --git-dir="$DOTFILES_DIR" --work-tree="$HOME" $@
+}
+
+# Pull dotfiles to $HOME (controlled by --work-tree="$HOME")
+config checkout
+
+# Disable showing untracked files in when using git for the repository
+config config status.showUntrackedFiles no
+
+# Print success message
+echo "Dotfiles installed successfully. If using bash, you can source .bashrc to apply the changes to your current shell. Otherwise the changes will apply to any newly opened shells."

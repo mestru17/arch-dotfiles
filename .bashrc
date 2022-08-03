@@ -31,8 +31,12 @@ alias lt="exa -aT --color=always --group-directories-first --icons"
 # Dotfiles management with git
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
+# Lazygit shortcut
+alias lg="lazygit"
+
 ##############
 # Set prompt #
 ##############
+# The PS1 line is set so there is a fallback prompt in case starship is not installed
 PS1='[\u@\h \W]\$ '
 eval "$(starship init bash)"

@@ -68,7 +68,7 @@ DOTFILES_DIR="$HOME/.dotfiles"
 if [ -d "$DOTFILES_DIR" ]; then
 	print_warning "Warning: Found existing $DOTFILES_DIR directory. To install new dotfiles, this script must overwrite this directory with the bare dotfiles git repository. If in doubt, please back up the $DOTFILES_DIR directory before proceeding."
 	if ! confirm "Do you want to overwrite the $DOTFILES_DIR directory?"; then
-		print_underline "Aborted dotfile installation."
+		print_warning "Aborted dotfile installation."
 		exit
 	fi
 
@@ -85,7 +85,7 @@ config() {
 }
 
 # Pull dotfiles to $HOME (controlled by --work-tree="$HOME")
-config checkout
+config checkout -f
 
 # Disable showing untracked files in when using git for the repository
 config config status.showUntrackedFiles no

@@ -21,7 +21,7 @@ if [ -d "$DOTFILES_DIR" ]; then
 fi
 
 # Clone bare repository to $HOME/.dotfiles
-git clone --bare git@github.com:mestru17/arch-dotfiles.git "$HOME/.dotfiles"
+git clone --bare git@github.com:mestru17/arch-dotfiles.git "$DOTFILES_DIR"
 
 config() {
 	git --git-dir="$DOTFILES_DIR" --work-tree="$HOME" $@

@@ -66,7 +66,7 @@ DOTFILES_DIR="$HOME/.dotfiles"
 
 # Ask user what to do if an existing dotfiles directory was found
 if [ -d "$DOTFILES_DIR" ]; then
-	print_warning "Warning: Found existing $DOTFILES_DIR directory. To install new dotfiles, this script must overwrite this directory with the bare dotfiles git repository. If in doubt, please back up the $DOTFILES_DIR directory before proceeding."
+	print_warning "Warning: Found existing $DOTFILES_DIR directory. To install new dotfiles, this script must overwrite this directory with the bare dotfiles git repository. If in doubt, please back up both the $DOTFILES_DIR directory and your existing dotfiles before proceeding."
 	if ! confirm "Do you want to overwrite the $DOTFILES_DIR directory?"; then
 		print_warning "Aborted dotfile installation."
 		exit

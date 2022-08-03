@@ -1,23 +1,80 @@
 #!/usr/bin/env bash
-DOTFILES_DIR="$HOME/.dotfiles"
+
+################
+# Define utils #
+################
+bold=$(tput bold)
+underline=$(tput sgr 0 1)
+reset=$(tput sgr0)
+
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
+blue=$(tput setaf 4)
+purple=$(tput setaf 5)
+
+print_header() {
+        printf "\n${bold}${purple}==========  %s  ==========${reset}\n" "$@"
+}
+
+print_success() {
+        printf "${green}✔ %s${reset}\n" "$@"
+}
+
+print_warning() {
+        printf "${yellow} %s${reset}\n" "$@"
+}
+
+print_error() {
+        printf "${red}✖ %s${reset}\n" "$@"
+}
+
+print_underline() {
+        printf "${underline}${bold}%s${reset}\n" "$@"
+}
+
+print_bold() {
+        printf "${bold}%s${reset}\n" "$@"
+}
+
+print_note() {
+        printf "${underline}${bold}${blue}Note:${reset}  ${blue}%s${reset}\n" "$@"
+}
 
 confirm() {
-        printf "\n$@"
+        printf "\n${bold}$@${reset}"
         read -p " (y/n) " -n 1 -r </dev/tty
         echo # move to a new line after read
         [[ $REPLY =~ ^[Yy]$ ]]
 }
 
+#########################
+# Set up error handling #
+#########################
+on_error_exit() {
+        local command=$BASH_COMMAND
+        print_error "Error: Failed to run '$command' on line $(caller)"
+}
+
+set -eEo pipefail
+trap "on_error_exit $LINENO" ERR
+
+####################
+# Install dotfiles #
+####################
+DOTFILES_DIR="$HOME/.dotfiles"
+
 # Ask user what to do if an existing dotfiles directory was found
 if [ -d "$DOTFILES_DIR" ]; then
-	if ! confirm "Found existing $DOTFILES_DIR directory. Do you want to overwrite it? Warning: Overwriting the existing directory completely removes it so make sure to back it up if you are in doubt."; then
-		echo "Aborted dotfile installation."
+	print_warning "Warning: Found existing $DOTFILES_DIR directory. To install new dotfiles, this script must overwrite this directory with the bare dotfiles git repository. If in doubt, please back up the $DOTFILES_DIR directory before proceeding."
+	if ! confirm "Do you want to overwrite the $DOTFILES_DIR directory?"; then
+		print_underline "Aborted dotfile installation."
 		exit
 	fi
 
 	# Remove old dotfiles directory before cloning
 	rm -rf "$DOTFILES_DIR"
-	echo "Removed old $DOTFILES_DIR directory."
+	print_success "Removed old $DOTFILES_DIR directory."
 fi
 
 # Clone bare repository to $HOME/.dotfiles
@@ -34,4 +91,5 @@ config checkout
 config config status.showUntrackedFiles no
 
 # Print success message
-echo "Dotfiles installed successfully. If using bash, you can source .bashrc to apply the changes to your current shell. Otherwise the changes will apply to any newly opened shells."
+print_success "Dotfiles installed successfully."
+print_note "If using bash, you can source .bashrc to apply the changes to your current shell. Otherwise the changes will apply to any newly opened shells."

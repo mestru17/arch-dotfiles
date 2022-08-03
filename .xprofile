@@ -1,0 +1,23 @@
+#############################
+# Set environment variables #
+#############################
+# XDG Base Directory Specification (set according to xdg-ninja)
+export ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
+
+######################
+# Configure graphics #
+######################
+# Set keyboard layout
+setxkbmap dk
+
+# Configure autorepeat
+xset r rate 300 60
+
+# Set screen resolution
+xrandr -s 1920x1080
+
+# Restore wallpaper
+nitrogen --restore &
+
+# Start compositor
+picom &

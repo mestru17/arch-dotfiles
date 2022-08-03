@@ -3,7 +3,7 @@ DOTFILES_DIR="$HOME/.dotfiles"
 
 confirm() {
         printf "\n$@"
-        read -p " (y/n) " -n 1 -r
+        read -p " (y/n) " -n 1 -r </dev/tty
         echo # move to a new line after read
         [[ $REPLY =~ ^[Yy]$ ]]
 }
@@ -12,7 +12,7 @@ confirm() {
 if [ -d "$DOTFILES_DIR" ]; then
 	if ! confirm "Found existing $DOTFILES_DIR directory. Do you want to overwrite it? Warning: Overwriting the existing directory completely removes it so make sure to back it up if you are in doubt."; then
 		echo "Aborted dotfile installation."
-		exit
+		exit 1
 	fi
 
 	# Remove old dotfiles directory before cloning

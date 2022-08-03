@@ -12,7 +12,7 @@ confirm() {
 if [ -d "$DOTFILES_DIR" ]; then
 	if ! confirm "Found existing $DOTFILES_DIR directory. Do you want to overwrite it? Warning: Overwriting the existing directory completely removes it so make sure to back it up if you are in doubt."; then
 		echo "Aborted dotfile installation."
-		exit 1
+		exit
 	fi
 
 	# Remove old dotfiles directory before cloning

@@ -34,11 +34,13 @@ alias ls="exa -al --header --color=always --group-directories-first --git --icon
 alias ll="exa -l --header --color=always --group-directories-first --git --icons"
 alias lt="exa -aT --color=always --group-directories-first --icons"
 
-# Dotfiles management with git
-alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-
 # Lazygit shortcut
 alias lg="lazygit"
+
+# Dotfiles management with git
+DOTFILES_DIR="$HOME/.dotfiles"
+alias config="/usr/bin/git --git-dir=$DOTFILES_DIR --work-tree=$HOME"
+alias config-lg="lazygit -g=$DOTFILES_DIR -w=$HOME"
 
 ##############
 # Set prompt #

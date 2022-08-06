@@ -3,4 +3,9 @@
 " this config file will not un-set or change any default settings unless
 " explicitly specified. As such, there is no reason to enable autoindent here,
 " for instance, as it is already enabled by default.
+
+" Turn on relative line numbers
 set relativenumber
+
+" Copy to and paste from system clipboard
+set clipboard+=unnamedplus

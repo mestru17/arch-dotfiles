@@ -23,6 +23,9 @@ export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 # Set Neovim as default editor
 export EDITOR="nvim"
 
+# Use bat instead of less when viewing man pages
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 ##################
 # Create aliases #
 ##################

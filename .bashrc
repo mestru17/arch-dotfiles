@@ -20,6 +20,9 @@ export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 # Does not work with Lightdm
 # export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
+# Set Neovim as default editor
+export EDITOR="nvim"
+
 ##################
 # Create aliases #
 ##################

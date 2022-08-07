@@ -14,46 +14,46 @@ blue=$(tput setaf 4)
 purple=$(tput setaf 5)
 
 print_header() {
-        printf "\n${bold}${purple}==========  %s  ==========${reset}\n" "$@"
+	printf "\n${bold}${purple}==========  %s  ==========${reset}\n" "$@"
 }
 
 print_success() {
-        printf "${green}✔ %s${reset}\n" "$@"
+	printf "${green}✔ %s${reset}\n" "$@"
 }
 
 print_warning() {
-        printf "${yellow} %s${reset}\n" "$@"
+	printf "${yellow} %s${reset}\n" "$@"
 }
 
 print_error() {
-        printf "${red}✖ %s${reset}\n" "$@"
+	printf "${red}✖ %s${reset}\n" "$@"
 }
 
 print_underline() {
-        printf "${underline}${bold}%s${reset}\n" "$@"
+	printf "${underline}${bold}%s${reset}\n" "$@"
 }
 
 print_bold() {
-        printf "${bold}%s${reset}\n" "$@"
+	printf "${bold}%s${reset}\n" "$@"
 }
 
 print_note() {
-        printf "${underline}${bold}${blue}Note:${reset}  ${blue}%s${reset}\n" "$@"
+	printf "${underline}${bold}${blue}Note:${reset}  ${blue}%s${reset}\n" "$@"
 }
 
 confirm() {
-        printf "\n${bold}%s${reset}" "$@"
-        read -p " (y/n) " -n 1 -r </dev/tty
-        echo # move to a new line after read
-        [[ $REPLY =~ ^[Yy]$ ]]
+	printf "\n${bold}%s${reset}" "$@"
+	read -p " (y/n) " -n 1 -r </dev/tty
+	echo # move to a new line after read
+	[[ $REPLY =~ ^[Yy]$ ]]
 }
 
 #########################
 # Set up error handling #
 #########################
 on_error_exit() {
-        local command=$BASH_COMMAND
-        print_error "Error: Failed to run '$command' on line $(caller)"
+	local command=$BASH_COMMAND
+	print_error "Error: Failed to run '$command' on line $(caller)"
 }
 
 set -eEo pipefail

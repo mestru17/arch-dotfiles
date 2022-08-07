@@ -4,8 +4,9 @@
 " explicitly specified. As such, there is no reason to enable autoindent here,
 " for instance, as it is already enabled by default.
 
-" Turn on relative line numbers
+" Turn on both normal and relative line numbers
 set relativenumber
+set number
 
 " Copy to and paste from system clipboard
 set clipboard+=unnamedplus

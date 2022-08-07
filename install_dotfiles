@@ -42,7 +42,7 @@ print_note() {
 }
 
 confirm() {
-        printf "\n${bold}$@${reset}"
+        printf "\n${bold}%s${reset}" "$@"
         read -p " (y/n) " -n 1 -r </dev/tty
         echo # move to a new line after read
         [[ $REPLY =~ ^[Yy]$ ]]
@@ -57,7 +57,7 @@ on_error_exit() {
 }
 
 set -eEo pipefail
-trap "on_error_exit $LINENO" ERR
+trap 'on_error_exit "$LINENO"' ERR
 
 ####################
 # Install dotfiles #
@@ -81,7 +81,7 @@ fi
 git clone --bare git@github.com:mestru17/arch-dotfiles.git "$DOTFILES_DIR"
 
 config() {
-	git --git-dir="$DOTFILES_DIR" --work-tree="$HOME" $@
+	git --git-dir="$DOTFILES_DIR" --work-tree="$HOME" "$@"
 }
 
 # Pull dotfiles to $HOME (controlled by --work-tree="$HOME")

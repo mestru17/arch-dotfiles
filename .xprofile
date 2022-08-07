@@ -21,3 +21,6 @@ nitrogen --restore &
 
 # Start compositor
 picom &
+
+# Start status bar
+slstatus &

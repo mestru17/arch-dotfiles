@@ -23,4 +23,5 @@ nitrogen --restore &
 picom &
 
 # Start status bar
-slstatus &
+# slstatus &
+dwmblocks &

@@ -1,14 +1,12 @@
-#
-# ~/.bashrc
-#
-
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+#!/usr/bin/env bash
 
 # Put everything in a function so local variables can be used, thereby
 # preventing variables from persisting in the shell after sourcing
 # this file.
 main() {
+	# If not running interactively, don't do anything
+	[[ $- != *i* ]] && return
+
 	#############################
 	# Set environment variables #
 	#############################

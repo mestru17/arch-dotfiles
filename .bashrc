@@ -47,6 +47,15 @@ main() {
 	alias config="/usr/bin/git --git-dir=$config_git_dir --work-tree=$config_work_tree"
 	alias config-lg="lazygit -g=$config_git_dir -w=$config_work_tree"
 
+	######################
+	# Source other files #
+	######################
+	# Add rust/cargo/rustup to path
+	local cargo_env_file="$HOME/.cargo/env"
+	if [ -f "$cargo_env_file" ]; then
+		source "$cargo_env_file"
+	fi
+
 	##############
 	# Set prompt #
 	##############

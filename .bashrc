@@ -42,7 +42,11 @@ main() {
 	# Dotfiles management with git
 	local config_git_dir="$HOME/.dotfiles"
 	local config_work_tree="$HOME"
+
+	# shellcheck disable=SC2139
 	alias config="/usr/bin/git --git-dir=$config_git_dir --work-tree=$config_work_tree"
+
+	# shellcheck disable=SC2139
 	alias config-lg="lazygit -g=$config_git_dir -w=$config_work_tree"
 
 	######################
@@ -51,6 +55,7 @@ main() {
 	# Add rust/cargo/rustup to path
 	local cargo_env_file="$HOME/.cargo/env"
 	if [ -f "$cargo_env_file" ]; then
+		# shellcheck disable=SC1090
 		source "$cargo_env_file"
 	fi
 

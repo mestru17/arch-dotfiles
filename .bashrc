@@ -8,7 +8,7 @@
 # Put everything in a function so local variables can be used, thereby
 # preventing variables from persisting in the shell after sourcing
 # this file.
-source_it() {
+main() {
 	#############################
 	# Set environment variables #
 	#############################
@@ -57,8 +57,8 @@ source_it() {
 	###########
 	# Cleanup #
 	###########
-	# Un-declare source_it so it doesn't persist in the shell after sourcing.
-	unset -f source_it
+	# Un-declare main so it doesn't persist in the shell after sourcing.
+	unset -f main
 }
 
-source_it
+main "$@"

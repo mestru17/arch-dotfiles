@@ -28,6 +28,9 @@ main() {
 	# Use bat instead of less when viewing man pages
 	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+	# Add doom emacs binaries to PATH
+	export PATH="$HOME/.emacs.d/bin:$PATH"
+
 	##################
 	# Create aliases #
 	##################
@@ -48,6 +51,9 @@ main() {
 
 	# shellcheck disable=SC2139
 	alias config-lg="lazygit -g=$config_git_dir -w=$config_work_tree"
+
+	# Connect to emacs daemon instead of normal start
+	alias emacs="emacsclient -c"
 
 	######################
 	# Source other files #

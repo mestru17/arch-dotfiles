@@ -1,10 +1,9 @@
-#+title: Readme
+#+title: arch-dotfiles
 #+author: Mathias Estrup
 
-* arch-dotfiles
 My Arch Linux dotfiles.
 
-** Dependencies
+* Dependencies
 Some dotfiles depend on certain third party packages being installed and might not work otherwise. The following table shows the depencies of each dotfile.
 
 | Dotfile(s)                      | Dependencies                            | Installation                                          |
@@ -22,7 +21,7 @@ sudo pacman -S --needed exa git starship xorg-server xorg-apps nitrogen picom ar
 yay -S --needed nerd-fonts-fira-code
 #+end_src
 
-** Installation
+* Installation
 Make sure to install dependencies for the dotfiles that you need as explained in [[Dependencies][Dependencies]].
 
 Then run:

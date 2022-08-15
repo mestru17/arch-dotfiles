@@ -27,7 +27,7 @@ yay -S --needed nerd-fonts-fira-code
 #+end_src
 
 * Installation
-Make sure to install dependencies for the dotfiles that you need as explained in [[Dependencies][Dependencies]].
+Make sure to install dependencies for the dotfiles that you need as explained in [[#dependencies][Dependencies]].
 
 Then run:
 

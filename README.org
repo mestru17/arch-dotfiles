@@ -3,6 +3,10 @@
 
 My Arch Linux dotfiles.
 
+* Table of Contents :toc:
+- [[#dependencies][Dependencies]]
+- [[#installation][Installation]]
+
 * Dependencies
 Some dotfiles depend on certain third party packages being installed and might not work otherwise. However, if there are any dotfiles that you do not need, you can safely ignore the depencies of those. The following table shows the depencies of each dotfile.
 
